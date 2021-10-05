@@ -24,7 +24,7 @@ module tb_2(
 
     );
 //inputs - reg
-reg ui_clk,input_trigger,ap_rst,ap_start,read_write_V;
+reg ui_clk,input_trigger,ap_rst,ap_start;
 reg [114:0] data_in;
 //outputs - wire
 wire ap_done,ap_idle,ap_ready;
