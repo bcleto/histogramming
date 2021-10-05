@@ -40,7 +40,6 @@ part_hist_v1_0 parthist1 (
   .ap_idle(ap_idle),                                        // output wire ap_idle
   .ap_ready(ap_ready),                                      // output wire ap_ready
   .data_in_V(data_in),                                    // input wire [114 : 0] data_in_V
-    .read_write_V(1'b0),                              // input wire [0 : 0] read_write_V
   .input_valid_V(input_trigger),                            // input wire [0 : 0] input_valid_V
   
   .accumulation_V(12),                          // input wire [31 : 0] accumulation_V
