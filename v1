@@ -1,5 +1,3 @@
-// vivado HLS partial histogramming_v1
-
 #include <stdint.h>
 #include "hls_stream.h"
 #include "ap_int.h"
@@ -11,7 +9,6 @@ const int TIMEBIN_BIT = 6;
 
 void part_hist_v1(
 		ap_uint<115> data_in,
-		ap_uint<1>   read_write,
 		ap_uint<1>   input_valid,
 		ap_uint<32>  accumulation,
 		hls::stream<ap_uint<16> >  &frequency_out,
@@ -20,10 +17,6 @@ void part_hist_v1(
 		)
 {
 //#pragma HLS INTERFACE ap_vld port=data_in
-//#pragma HLS INTERFACE ap_fifo port=data_out_fifo
-//#pragma HLS INTERFACE ap_fifo port=pixel_addr_fifo
-
-
 	int loop_number = 1;
 ap_uint<115> complete_data;
 ap_uint<14> tdc_value;
@@ -41,16 +34,14 @@ ap_uint<8> memory_value_read, memory_value_write ;
 
 ap_uint<DATA_MAX_COUNT_BIT> data_count_value;
 ap_uint<TIMEBIN_BIT> tdc_read_value;
-
-
 ap_uint<16> mode[128];
 ap_uint<16> frequency[128];
 
+/*
 for(unsigned long r=0;r<8; r++){	//2048
 	pixel_true_w_mm[r]=0;
 	pixel_memory_location[r]=0;
 }
-
 
 for(unsigned long r=0;r<128; r++){	//2048
 	mode[r]=0;
@@ -61,14 +52,11 @@ for(unsigned long r=0;r<128; r++){	//2048
 for(unsigned long r=0;r<8192; r++){
 	memory[r]=0;
 }
+*/
 
-//if(read_write==0){
-//for(long t=0;t<=accumulation;t++){
-for(long t=0;t<=0;t++){
+for(long t=0;t<=accumulation;t++){
+	ap_wait_until(input_valid);	// wait for trigger
 
-//while(accumulation){
-if(input_valid){
-//do{
 		complete_data=data_in;
 		tdc_value = complete_data.range(109, 96);
 		tdc_value_compressed = tdc_value.range(TIMEBIN_BIT-1,0);
@@ -109,10 +97,8 @@ if(input_valid){
 			}
 
 		}
+
 }
-//} while(accumulation);
-}
-//}
 
 
 				for(unsigned int r=0;r<128; r++){	//flush out data
