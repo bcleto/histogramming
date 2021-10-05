@@ -9,7 +9,6 @@
 const int fifo_depth=128;
 void part_hist_v1(
 		ap_uint<115> data_in,
-		ap_uint<1>  read_write,
 		ap_uint<1>   input_valid,
 		ap_uint<32>  accumulation,
 		hls::stream<ap_uint<16> > &frequency_out,
@@ -29,8 +28,7 @@ ap_uint<32> bb;
 ap_uint<32> bc;
 ap_uint<1>   input_valid;
 ap_uint<32>  accumulation;
-ap_uint<32>  tt;
-ap_uint<32>  status;
+
 
 int main(){
 
@@ -54,9 +52,8 @@ int main(){
 			}
 
 				part_hist_v1(	one_channel_data,
+								1,
 								0,
-								1,
-								1,
 								frequency,
 								mode
 								);
