@@ -8,7 +8,7 @@ dev = openFPGA;
 dev 
 
 
-bitfile = 'C:/Users/efe/Desktop/epfl/Year_1/Research/fpga_tests/PipeTest_custom/pipe_test_3/project_4/project_4.runs/impl_1/top_v10.bit';
+bitfile = '';
 configureFPGA(dev, bitfile)
 
 mask = 4294967295; %2^32-1
