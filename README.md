@@ -8,3 +8,4 @@ A histogramming IP which gets address and value then calculates peak location an
 
 - data partitioning
 - only internal BRAM of the fpga is used
+- v1 = vanilla histogram
