@@ -40,9 +40,6 @@ module top_v10(
     wire pipe_in_write,pipe_in_ready;
     wire pipe_out_read,pipe_out_ready,pipe_out_read_a1,pipe_out_ready_a1;
     wire reset,empty,locked,reset_clk;
-    wire [11:0] data_count;
-    wire mhz200,trigger_user_left,trigger_user_right;
-    wire [4109:0] data_in_left,data_in_right;
     
 function [3:0] xem7360_led;
 input [3:0] a;
